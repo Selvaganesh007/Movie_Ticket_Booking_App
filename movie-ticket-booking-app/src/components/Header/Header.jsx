@@ -11,13 +11,13 @@ function Header() {
 ;    }  
     return (
       <>
-      <div class="header-container">
-        <div class="title">
-          <img class="logo" src={ticket} alt="My Icon" />
+      <div className="header-container">
+        <div className="title">
+          <img className="logo" src={ticket} alt="My Icon" />
           <h2>Book My Tickets</h2>
         </div>
-        <input class="search-input" placeholder='Search'></input>
-        <select class="city" value={selectedOption} onChange={handleCityChange}>
+        <input className="search-input" placeholder='Search'></input>
+        <select className="city" value={selectedOption} onChange={handleCityChange}>
           <option value="" disabled>
             Select a City
           </option>
@@ -25,8 +25,8 @@ function Header() {
           <option value="Madurai">Madurai</option>
           <option value="Trichy">Trichy</option>
         </select>
-          <button class="signin-btn">Signin</button>
-          <button class="menu">
+          <button className="signin-btn">Signin</button>
+          <button className="menu">
             <img src={MenuIcon} alt="Menu Icon"/>
           </button>
       </div>
