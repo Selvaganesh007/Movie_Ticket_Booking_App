@@ -1,4 +1,5 @@
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 import './LandingPage.scss';
 
 function LandingPage() {
@@ -6,6 +7,7 @@ function LandingPage() {
     return (
       <>
         <Header />
+        <Footer />
       </>
     )
   }

@@ -7,9 +7,9 @@ import Admin from '../components/Admin/Admin';
 
 const routeConfig = [
   { path: "/", element: <LandingPage /> },
-  { path: "login", element: <Login /> },
-  { path: "register", element: <Register /> },
-  { path: "admin", element: <Admin /> },
+  { path: "/login", element: <Login /> },
+  { path: "/register", element: <Register /> },
+  { path: "/admin", element: <Admin /> },
 ];
 
 const Router = () => {
