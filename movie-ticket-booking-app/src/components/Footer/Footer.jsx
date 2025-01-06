@@ -8,26 +8,26 @@ function Footer () {
 
     return (
         <div>
-            <div class="footter-actions">
-                <div class="">
-                    <a href="" class="icon-links">
-                        <div class="">
+            <div className="footter-actions">
+                <div className="">
+                    <a href="" className="icon-links">
+                        <div className="">
                             <img src={customerCareIcon}></img>
                         </div>
                         <div>24/7 CUSTOMER CARE</div>
                     </a>
                 </div>
-                <div class="">
-                    <a href="" class="icon-links">
-                        <div class="">
+                <div className="">
+                    <a href="" className="icon-links">
+                        <div className="">
                             <img src={ticketIcon}></img>
                         </div>
                         <div>RESEND BOOKING CONFIRMATION</div>
                     </a>
                 </div>
-                <div class="">
-                    <a href="" class="icon-links">
-                        <div class="">
+                <div className="">
+                    <a href="" className="icon-links">
+                        <div className="">
                         <img src={newsletterIcon}></img>
                         </div>
                         <div>SUBSCRIBE TO THE NEWSLETTER</div>

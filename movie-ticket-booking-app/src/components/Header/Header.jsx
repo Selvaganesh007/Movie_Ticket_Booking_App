@@ -3,10 +3,12 @@ import { useState } from 'react';
 import { Input, Select, Button } from "antd";
 import ticket from '../../assets/ticket3.svg';
 import MenuIcon from  "../../assets/icons8-menu.svg";
+import Login from '../Login/Login';
 
 function Header() {
     const [selectedOption, setSelectedOption] = useState('');
     const [searchInput, setSearchInput] = useState('');
+    const [isModalOpen, ModalToggle] = useState(false)
 
     const handleCityChange = (value) => {
       setSelectedOption(value);
@@ -14,6 +16,10 @@ function Header() {
 
     const onChangeSearch = (e) => {
       setSearchInput(e.target.value.trim())
+    }
+
+    const onSubmitModel = () => {
+      console.log('asds')
     }
     return (
       <>
@@ -49,10 +55,11 @@ function Header() {
             },
           ]}
         />
-          <Button className="signin-btn">Signin</Button>
+          <Button className="signin-btn" onClick={() => ModalToggle(true)}>Signin</Button>
           <Button className="menu">
             <img src={MenuIcon} alt="Menu Icon"/>
           </Button>
+          <Login isModalOpen={isModalOpen} handleOk={onSubmitModel} handleCancel={() => ModalToggle(false)} />
       </div>
       </>
     )

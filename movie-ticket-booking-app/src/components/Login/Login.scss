@@ -1,0 +1,39 @@
+@import "../../../scss/_variables.scss";
+
+.btn-container {
+      display: flex;
+      column-gap: 10px;
+      .btn-class{
+        background: $apple-red;
+        color: white;
+        border-radius: 30px;
+        border: 1px solid white;
+        height: 36px;
+        width: 100px;  
+      }
+}
+
+.ant-modal-content {
+  .ant-modal-header {
+    .ant-modal-title{
+      color: $apple-red;
+    }
+  }
+  .ant-modal-body{
+    .modal-body{
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+    }
+    .modal-footer{
+      margin-top: 10px;
+      .footer-text {
+        text-align: center;
+        margin-top: 5px;
+        > span{
+          color: $apple-red;
+        }
+      }
+    }
+  }
+}
