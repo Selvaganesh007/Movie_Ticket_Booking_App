@@ -3,17 +3,18 @@ import {Modal, Input, Button} from "antd";
 import './Login.scss'
 import { useState } from "react";
 function Login({isModalOpen, handleOk, handleCancel}) {
-  const [Password, setPassword] = useState('');
-  const [id, setId] = useState('');
+  const [userDetail, setUserDetail] = useState({name: '', password:'', mobile: ''});
 
   const [isRegister, setIsRegister] = useState(false);
 
-  const onChangePassword = (e) => {
-    setPassword(e.target.value.trim());
-  }
-
-  const onChangeId = (e) => {
-    setId(e.target.value.trim())
+  const setUserData = (e) => {
+    const { name, value} = e.target;
+    setUserDetail((currInput) => {
+      return{
+        ...currInput,
+        [name]: value
+      }
+    });
   }
 
   const onClickSignIn = () => {
@@ -21,17 +22,29 @@ function Login({isModalOpen, handleOk, handleCancel}) {
   }
 
   const onClickSignUp = () => {
+    localStorage.setItem(userDetail.mobile, JSON.stringify(userDetail));
+    clearState();
+    setIsRegister(false);
+    console.log("registration successfull")
+  }
 
+  const clearState = () => {
+    setUserDetail({ name: '', password: '', mobile: '' });
   }
 
   return (
     <div>
       <Modal title={!isRegister ? "Login" : "Signup"} open={isModalOpen} footer={null} onCancel={handleCancel}>
       <section class="modal-body" id="modalDescription">
-          <div>Login Id</div>
-          <Input value={id} onChange={onChangeId}/>
+      {isRegister && (
+        <>
+          <div>Name</div>
+          <Input value={userDetail.name} name="name" onChange={setUserData}/>
+        </>)}
+          <div>Mobile No.</div>
+          <Input value={userDetail.mobile} name="mobile" onChange={setUserData}/>
           <div>Password</div>
-          <Input value={Password} onChange={onChangePassword}/>
+          <Input value={userDetail.password}  name="password" onChange={setUserData}/>
       </section>
       <footer class="modal-footer">
         {!isRegister && (

@@ -4,14 +4,19 @@ import { Input, Select, Button } from "antd";
 import ticket from '../../assets/ticket3.svg';
 import MenuIcon from  "../../assets/icons8-menu.svg";
 import Login from '../Login/Login';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCity } from '../../Slices/userSlice';
 
 function Header() {
-    const [selectedOption, setSelectedOption] = useState('');
+    const dispatch = useDispatch();
     const [searchInput, setSearchInput] = useState('');
-    const [isModalOpen, ModalToggle] = useState(false)
+    const [isModalOpen, ModalToggle] = useState(false);
+
+    const user = useSelector((state) => state.userInfo.user);
+    const city = useSelector((state) => state.userInfo.city)
 
     const handleCityChange = (value) => {
-      setSelectedOption(value);
+      dispatch(setCity(value))
     }  
 
     const onChangeSearch = (e) => {
@@ -33,7 +38,7 @@ function Header() {
           defaultValue=""
           placeholder="Select a City"
           className="city"
-          value={selectedOption}
+          value={city}
           onChange={handleCityChange}
           options={[
             {
