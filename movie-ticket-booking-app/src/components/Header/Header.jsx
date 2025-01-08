@@ -6,10 +6,11 @@ import MenuIcon from  "../../assets/icons8-menu.svg";
 import Login from '../Login/Login';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCity } from '../../Slices/userSlice';
+import UserInfo from '../UserInfo/UserInfo';
 
-function Header() {
+function Header({handleSearch, searchInput}) {
     const dispatch = useDispatch();
-    const [searchInput, setSearchInput] = useState('');
+    // const [searchInput, setSearchInput] = useState('');
     const [isModalOpen, ModalToggle] = useState(false);
 
     const user = useSelector((state) => state.userInfo.user);
@@ -20,12 +21,9 @@ function Header() {
     }  
 
     const onChangeSearch = (e) => {
-      setSearchInput(e.target.value.trim())
+      handleSearch(e.target.value)
     }
 
-    const onSubmitModel = () => {
-      console.log('asds')
-    }
     return (
       <>
       <div className="header-container">
@@ -60,11 +58,15 @@ function Header() {
             },
           ]}
         />
-          <Button className="signin-btn" onClick={() => ModalToggle(true)}>Signin</Button>
+          {!user.name ? (<Button className="signin-btn" onClick={() => ModalToggle(true)}>Signin</Button>
+            ) : (
+                <UserInfo></UserInfo>
+            )
+          }
           <Button className="menu">
             <img src={MenuIcon} alt="Menu Icon"/>
           </Button>
-          <Login isModalOpen={isModalOpen} handleOk={onSubmitModel} handleCancel={() => ModalToggle(false)} />
+          <Login isModalOpen={isModalOpen} handleCancel={() => ModalToggle(false)} />
       </div>
       </>
     )
