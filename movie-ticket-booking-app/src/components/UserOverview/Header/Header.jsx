@@ -1,14 +1,12 @@
 import './Header.scss';
 import { useState } from 'react';
 import { Input, Select, Button } from "antd";
-import ticket from '../../assets/ticket3.svg';
-import MenuIcon from  "../../assets/icons8-menu.svg";
-import Login from '../Login/Login';
+import Login from '../../Login/Login';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCity } from '../../Slices/userSlice';
-import UserInfo from '../UserInfo/UserInfo';
+import { setCity } from '../../../Slices/userSlice';
+import UserInfo from '../../UserInfo/UserInfo';
 
-function Header({handleSearch, searchInput}) {
+function Header({ handleSearch, searchInput }) {
     const dispatch = useDispatch();
     // const [searchInput, setSearchInput] = useState('');
     const [isModalOpen, ModalToggle] = useState(false);
@@ -28,7 +26,6 @@ function Header({handleSearch, searchInput}) {
       <>
       <div className="header-container">
         <div className="title">
-          <img className="logo" src={ticket} alt="My Icon" />
           <h2>Book My Tickets</h2>
         </div>
         <Input className="search-input" value={searchInput} placeholder='Search' onChange={onChangeSearch}></Input>
@@ -63,9 +60,6 @@ function Header({handleSearch, searchInput}) {
                 <UserInfo></UserInfo>
             )
           }
-          <Button className="menu">
-            <img src={MenuIcon} alt="Menu Icon"/>
-          </Button>
           <Login isModalOpen={isModalOpen} handleCancel={() => ModalToggle(false)} />
       </div>
       </>

@@ -1,8 +1,8 @@
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
+import Header from '../Header/Header.jsx';
+import Footer from '../Footer/Footer.jsx';
 import './LandingPage.scss';
-import Content from '../Content/Content';
-import { Movies } from '../../assets/FilmConstant.js';
+import MovieCard from '../MovieCard/MovieCard.jsx';
+import { Movies } from '../../../assets/FilmConstant.js';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -26,8 +26,8 @@ function LandingPage() {
         <Header handleSearch={onChangeSearchInput} searchInput={searchInput} />
         <div className='movies-container'>
           {moviesData?.map((movie) => (
-            <Link key={movie.imdbID} className='clickable' to={`/movies/${movie?.imdbID}`}>
-              <Content
+            <Link key={movie.imdbID} className='clickable' to={`${movie?.imdbID}`}>
+              <MovieCard
                 key={movie.imdbID}
                 movieDetail={movie}
               />

@@ -1,13 +1,12 @@
-import './Content.scss';
-import Star from '../../assets/star-svgrepo-com.svg'
+import './MovieCard.scss';
 
-function Content({movieDetail}) {
+function MovieCard({movieDetail}) {
     return(
         <div className='Content-container'>
             <div className='img-sec'>
                 <img src={movieDetail?.Images[0]} alt={movieDetail?.Title}/>
                 <div className='rating-sec'>
-                    <div className='rating'><img src={Star} /> {movieDetail?.imdbRating}</div>
+                    <div className='rating'>{movieDetail?.imdbRating}</div>
                     <div>{movieDetail?.imdbVotes} Votes</div>
                 </div>
             </div>
@@ -18,4 +17,4 @@ function Content({movieDetail}) {
     )
 }
 
-export default Content;
+export default MovieCard;

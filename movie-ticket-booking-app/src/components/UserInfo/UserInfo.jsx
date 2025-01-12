@@ -1,5 +1,4 @@
 import './UserInfo.scss';
-import userIcon from "../../assets/user-circle-svgrepo-com.svg";
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../Slices/userSlice';
 
@@ -12,7 +11,7 @@ function UserInfo() {
     }
     return(
         <div className='icon-container'>
-            <img className='icon' src={userIcon}/>
+            User
             <div className='drop-down'>
                 <div>Hi {user.name}</div>
                 <div>Mobile: {user.mobile}</div>

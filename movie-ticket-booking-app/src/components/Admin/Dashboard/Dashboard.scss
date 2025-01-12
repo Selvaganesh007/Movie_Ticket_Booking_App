@@ -1,0 +1,69 @@
+.Dashboard {
+  margin-left: 14%;
+  font-size: 30px;
+  padding: 30px;
+  .header {
+    margin-bottom: 20px;
+  }
+  .Dashboard_Sales {
+    display: flex;
+    gap: 20px;
+    height: 50vh;
+    margin-bottom: 20px;
+    .Sales_Details {
+      width: 50%;
+      height: 50vh;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      overflow: hidden;
+      .Sales_Details-header {
+        margin: 10px 0 10px;
+      }
+      .Ticket_Details {
+        display: flex;
+        gap: 7px;
+        .Ticket_detail-Screen {
+          background-color: hotpink;
+          padding: 10px;
+          height: 40vh;
+        }
+      }
+    }
+    .chart {
+      background-color: hotpink;
+      padding: 10px;
+      width: 50%;
+    }
+  }
+  .Screen_Details {
+    height: 30vh;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    .Screen_Detail-card {
+      background-color: aqua;
+      width: 25%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      .Screen_no {
+        font-weight: 800;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      }
+      .Movie_name {
+        font-size: 34px;
+        color: red;
+        font-weight: 700;
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      }
+      .Shows {
+        overflow-wrap: anywhere;
+        text-align: center;
+        font-size: 24px;
+      }
+    }
+  }
+}

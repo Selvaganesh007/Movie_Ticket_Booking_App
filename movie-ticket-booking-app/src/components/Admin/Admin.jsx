@@ -1,6 +1,12 @@
+import { Outlet } from "react-router-dom";
+import Sidebar from "./Sidebar/Sidebar"; 
+
 function Admin() {
   return (
-    <div>Admin</div>
+    <div>
+      <Sidebar />
+      <Outlet />
+    </div>
   )
 }
 
