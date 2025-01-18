@@ -1,9 +1,9 @@
-import './Show.scss';
+// import './Show.scss';
 
 function Show() {
   return (
     <div className="Show">
-      <div className='header'></div>
+      <div className='header'>selva </div>
     </div>
   )
 }

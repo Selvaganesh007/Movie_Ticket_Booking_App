@@ -12,9 +12,23 @@
         width: 100px;  
       }
 }
+.heading-text{
+  text-align: center;
+  color: $apple-red;
+}
 
 .ant-modal-content {
   .ant-modal-header {
+    .header-title-container{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: 25px;
+      .active-tab{
+        border-bottom: 5px solid;
+        text-shadow: 1px 0px 10px;
+      }
+    }
     .ant-modal-title{
       color: $apple-red;
     }
@@ -27,6 +41,9 @@
     }
     .modal-footer{
       margin-top: 10px;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
       .footer-text {
         text-align: center;
         margin-top: 5px;

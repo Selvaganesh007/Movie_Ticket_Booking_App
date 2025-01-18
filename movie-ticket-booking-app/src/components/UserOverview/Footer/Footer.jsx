@@ -1,4 +1,10 @@
 import "./Footer.scss";
+import { FcCustomerSupport } from "react-icons/fc";
+import { BsFillTicketPerforatedFill } from "react-icons/bs";
+import { SlEnvolopeLetter } from "react-icons/sl";
+
+
+
 
 function Footer() {
   return (
@@ -6,19 +12,19 @@ function Footer() {
       <div className="footter-actions">
         <div className="">
           <a href="" className="icon-links">
-            <div className="">CRM</div>
+            <div><FcCustomerSupport className="icon"/></div>
             <div>24/7 CUSTOMER CARE</div>
           </a>
         </div>
         <div className="">
           <a href="" className="icon-links">
-            <div className="">ticket</div>
+            <div><BsFillTicketPerforatedFill className="icon"/></div>
             <div>RESEND BOOKING CONFIRMATION</div>
           </a>
         </div>
         <div className="">
           <a href="" className="icon-links">
-            <div className="">newsletter</div>
+            <div><SlEnvolopeLetter className="icon"/></div>
             <div>SUBSCRIBE TO THE NEWSLETTER</div>
           </a>
         </div>

@@ -1,0 +1,37 @@
+.detailpage-cont{
+    background: burlywood;
+    height: 100%;
+    width: 100%;
+    .movie-details{
+        .movie-img{
+            width: 50%;
+            height: 400px;
+            display: block;
+            margin: 0 auto;
+        }
+        .details{
+            h1 {
+                text-align: center;
+            }
+            .split-sec{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    column-gap: 10px;
+            }
+            > div {
+                text-align: center;
+            }
+        }
+    }
+    .show-text {
+        text-align: center;
+    }
+    .time-btncont {
+        display: flex;
+        column-gap: 65px;
+        flex-wrap: wrap;
+        row-gap: 10px;
+        justify-content: center;
+    }
+}

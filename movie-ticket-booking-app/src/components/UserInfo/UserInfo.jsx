@@ -1,6 +1,8 @@
 import './UserInfo.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../Slices/userSlice';
+import { FaRegUserCircle } from "react-icons/fa";
+
 
 function UserInfo() {
     const dispatch = useDispatch();
@@ -11,7 +13,7 @@ function UserInfo() {
     }
     return(
         <div className='icon-container'>
-            User
+           <FaRegUserCircle className='icon'/>
             <div className='drop-down'>
                 <div>Hi {user.name}</div>
                 <div>Mobile: {user.mobile}</div>

@@ -10,17 +10,17 @@ function Sidebar() {
     {
       name: 'Dashboard',
       icon: <LuLayoutDashboard />,
-      path: '/dashboard',
+      path: 'dashboard',
     },
     {
       name: 'Screen',
       icon: <GiTheater />,
-      path: '/screen',
+      path: 'screen',
     },
     {
       name: 'Show',
       icon: <RiMovie2Line />,
-      path: '/show',
+      path: 'show',
     },
   ];
 

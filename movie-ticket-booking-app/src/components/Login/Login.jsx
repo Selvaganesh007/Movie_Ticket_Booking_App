@@ -4,14 +4,18 @@ import './Login.scss'
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from "react";
 import { setUser } from "../../Slices/userSlice";
+import { useNavigate } from 'react-router-dom';
+
 
 function Login({isModalOpen, handleCancel}) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [userDetail, setUserDetail] = useState({name: '', password:'', mobile: ''});
+  const [userDetail, setUserDetail] = useState({name: '', password:'', id: ''});
 
   const [isRegister, setIsRegister] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
+  const [activeTab, setTab] = useState("user");
 
   useEffect(() => {
     setIsRegister(false);
@@ -22,47 +26,58 @@ function Login({isModalOpen, handleCancel}) {
     setUserDetail((currInput) => {
       return{
         ...currInput,
-        [name]: name === "mobile" ? value.replace(/\D/g, '') : value
+        [name]: value
       }
     });
   }
 
   const onClickSignIn = () => {
-    if(!userDetail.mobile.length || !userDetail.password.length ) {
+    if(!userDetail.id.length || !userDetail.password.length ) {
       messageApi.open({
         type: 'error',
         content: 'All fields are mandatory',
         duration: 2,
       });
     } else{
-      const userInfo = JSON.parse(localStorage.getItem(userDetail.mobile));
-      if(!userInfo) {
-        messageApi.open({
-          type: 'error',
-          content: 'No such user',
-          duration: 2,
-        });
-      } else if(userInfo.password !== userDetail.password) {
-        messageApi.open({
-          type: 'error',
-          content: 'Password is wrong',
-          duration: 2,
-        });
+      if(activeTab === "admin") {
+        if(userDetail.password === "admin" && userDetail.id === "admin") {
+          navigate('/admin');
+        } else {
+          messageApi.open({
+            type: 'error',
+            content: 'Id or Password is wrong',
+            duration: 2,
+          });
+        }
       } else {
-        messageApi.open({
-          type: 'success',
-          content: 'Login successfull',
-          duration: 2,
-        });
-        dispatch(setUser(userInfo))
-        handleCancel();
+        const userInfo = JSON.parse(localStorage.getItem(userDetail.id));
+        if(!userInfo) {
+          messageApi.open({
+            type: 'error',
+            content: 'No such user',
+            duration: 2,
+          });
+        } else if(userInfo.password !== userDetail.password) {
+          messageApi.open({
+            type: 'error',
+            content: 'Password is wrong',
+            duration: 2,
+          });
+        } else {
+          messageApi.open({
+            type: 'success',
+            content: 'Login successfull',
+            duration: 2,
+          });
+          dispatch(setUser(userInfo))
+          handleCancel();
+        }
       }
-
     }
   }
 
   const onClickSignUp = () => {
-    if(!userDetail.mobile.length || !userDetail.name.length || !userDetail.password.length ) {
+    if(!userDetail.id.length || !userDetail.name.length || !userDetail.password.length ) {
       messageApi.open({
         type: 'error',
         content: 'All fields are mandatory',
@@ -70,7 +85,7 @@ function Login({isModalOpen, handleCancel}) {
       });
       return;
     }
-    localStorage.setItem(userDetail.mobile, JSON.stringify(userDetail));
+    localStorage.setItem(userDetail.id, JSON.stringify(userDetail));
     clearState();
     setIsRegister(false);
     messageApi.open({
@@ -81,22 +96,27 @@ function Login({isModalOpen, handleCancel}) {
   }
 
   const clearState = () => {
-    setUserDetail({ name: '', password: '', mobile: '' });
+    setUserDetail({ name: '', password: '', id: '' });
+  }
+
+  const onclickTab = (val) => {
+    setTab(val);
   }
 
   return (
     <>
       {contextHolder}
       <div>
-        <Modal title={!isRegister ? "Login" : "Signup"} open={isModalOpen} footer={null} onCancel={handleCancel}>
+        <Modal title={<div className="header-title-container"><div className={activeTab === "user" ? "active-tab" : ""}  onClick={() => setTab("user")}>User</div><div className={activeTab === "admin" ? "active-tab" : ""} onClick={() => setTab("admin")}>Admin</div></div>} open={isModalOpen} footer={null} onCancel={handleCancel}>
         <section className="modal-body" id="modalDescription">
+        {activeTab === 'user' && (<div className="heading-text">{!isRegister ? "Login" : "Signup"}</div>)}
         {isRegister && (
           <>
             <div>Name</div>
             <Input value={userDetail.name} name="name" onChange={setUserData}/>
           </>)}
-            <div>Mobile No.</div>
-            <Input value={userDetail.mobile} maxLength={10} name="mobile" onChange={setUserData}/>
+            <div>User Id</div>
+            <Input value={userDetail.id} name="id" onChange={setUserData}/>
             <div>Password</div>
             <Input value={userDetail.password}  name="password" onChange={setUserData}/>
         </section>
@@ -111,8 +131,7 @@ function Login({isModalOpen, handleCancel}) {
                     Cancel
                   </Button>
                 </div>
-                <div className="footer-text">Dont have an account? <span onClick={() => setIsRegister(true)}>Create new account</span>
-                </div>
+                {activeTab === 'user' && (<div className="footer-text">Dont have an account? <span onClick={() => setIsRegister(true)}>Create new account</span></div>)}
             </>
           )}
             {isRegister && (
@@ -125,7 +144,7 @@ function Login({isModalOpen, handleCancel}) {
                     Cancel
                   </Button>
               </div>
-                <div className="footer-text">Having an account? <span onClick={() => setIsRegister(false)}>Back to login</span></div>
+              {activeTab === 'user' && (<div className="footer-text">Having an account? <span onClick={() => setIsRegister(false)}>Back to login</span></div>)}
               </>
           )}
           </footer>
