@@ -1,34 +1,37 @@
 import "./Footer.scss";
-import { FcCustomerSupport } from "react-icons/fc";
+import { RiCustomerService2Line } from "react-icons/ri";
 import { BsFillTicketPerforatedFill } from "react-icons/bs";
 import { SlEnvolopeLetter } from "react-icons/sl";
 
-
-
+const footerActions = [
+  {
+    icon: <RiCustomerService2Line className="icon" />,
+    description: "24/7 CUSTOMER CARE",
+    link: "",
+  },
+  {
+    icon: <BsFillTicketPerforatedFill className="icon" />,
+    description: "RESEND BOOKING CONFIRMATION",
+    link: "",
+  },
+  {
+    icon: <SlEnvolopeLetter className="icon" />,
+    description: "SUBSCRIBE TO THE NEWSLETTER",
+    link: "",
+  },
+];
 
 function Footer() {
   return (
-    <div>
-      <div className="footter-actions">
-        <div className="">
-          <a href="" className="icon-links">
-            <div><FcCustomerSupport className="icon"/></div>
-            <div>24/7 CUSTOMER CARE</div>
+    <div className="footer-actions">
+      {footerActions.map((act) => {
+        return <div key={act.link} className="">
+          <a href={act.link} className="icon-links">
+            {act.icon}
+            <p className="link_description">{act.description}</p>
           </a>
         </div>
-        <div className="">
-          <a href="" className="icon-links">
-            <div><BsFillTicketPerforatedFill className="icon"/></div>
-            <div>RESEND BOOKING CONFIRMATION</div>
-          </a>
-        </div>
-        <div className="">
-          <a href="" className="icon-links">
-            <div><SlEnvolopeLetter className="icon"/></div>
-            <div>SUBSCRIBE TO THE NEWSLETTER</div>
-          </a>
-        </div>
-      </div>
+      })}
     </div>
   );
 }

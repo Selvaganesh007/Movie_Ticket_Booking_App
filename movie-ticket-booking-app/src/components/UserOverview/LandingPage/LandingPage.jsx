@@ -24,9 +24,9 @@ function LandingPage() {
     return (
       <>
         <Header handleSearch={onChangeSearchInput} searchInput={searchInput} />
-        <div className='movies-container'>
+        <div className='movies_container'>
           {moviesData?.map((movie) => (
-            <Link key={movie.imdbID} className='clickable' to={`/movie/${movie?.imdbID}`}>
+            <Link key={movie.Movie_ID} className='clickable' to={`/movie/${movie?.Movie_ID}`}>
               <MovieCard
                 key={movie.imdbID}
                 movieDetail={movie}
